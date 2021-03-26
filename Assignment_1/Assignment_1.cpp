@@ -2,9 +2,10 @@
 //
 
 #include <iostream>
-
+#include "GradeReport.h"
 int main()
 {
+    GradeReport* rp = new GradeReport(12, "Test", "Test2", 12, 12);
     std::cout << "Hello World!\n";
 }
 

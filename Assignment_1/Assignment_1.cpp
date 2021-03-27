@@ -5,8 +5,10 @@
 #include "GradeReport.h"
 int main()
 {
-    GradeReport* rp = new GradeReport(12, "Test", "Test2", 12, 12);
-    std::cout << "Hello World!\n";
+    GradeReport* rp = new GradeReport(201715389, "Charbel", "Harb", 15, 32);
+    GradeReport rp2, rp3;
+    std::cin >> rp2 >> rp3;
+    //delete rp;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

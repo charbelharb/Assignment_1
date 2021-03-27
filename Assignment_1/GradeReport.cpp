@@ -30,7 +30,7 @@ GradeReport& GradeReport::setLastName(const char* lastName)
 
 GradeReport& GradeReport::setNumberOfCredits(unsigned int numberOfCredits)
 {
-	_numberOfCredits = numberOfCredits > 3 || numberOfCredits <= 18 ? numberOfCredits : 3;
+	_numberOfCredits = numberOfCredits >= 3 && numberOfCredits <= 18 ? numberOfCredits : 3;
 	return *this;
 }
 
@@ -43,4 +43,48 @@ GradeReport& GradeReport::setAge(unsigned int age)
 GradeReport::GradeReport(unsigned int id, const char* firstName, const char* lastName, unsigned short numberOfCredits, unsigned short age)
 {
 	set(id, firstName, lastName, numberOfCredits, age);
+}
+
+GradeReport::GradeReport()
+{
+	_id = {};
+	_firstName = {};
+	_lastName = {};
+	_numberOfCredits = {};
+	_age = {};
+}
+
+GradeReport::~GradeReport()
+{
+	 delete [] _firstName;
+	 delete [] _lastName;
+}
+
+std::ostream& operator<<(std::ostream& out, const GradeReport& gr)
+{
+	return out;
+}
+
+std::istream& operator>>(std::istream& in, GradeReport& gr)
+{
+	std::cout << "Enter id" << std::endl;
+	unsigned int id{};
+	in >> id;	
+	in.ignore();
+	std::cout << "Enter First Name" << std::endl;
+	char* firstName = new char[MAX_INPUT];
+	in.getline(firstName,MAX_INPUT); 
+	std::cout << "Enter Last Name" << std::endl;
+	char* lastName = new char[MAX_INPUT];
+	in.getline(lastName, MAX_INPUT);
+	std::cout << "Enter Number of Credit" << std::endl;
+	unsigned short numberOfCredit{};
+	in >> numberOfCredit;
+	unsigned short age{};
+	std::cout << "Enter age" << std::endl;
+	in >> age;
+	gr.set(id, firstName, lastName, numberOfCredit, age);
+	delete[] firstName;
+	delete[] lastName;	
+	return in;
 }

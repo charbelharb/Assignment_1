@@ -1,10 +1,31 @@
 #ifndef GRADE_REPORT_H
 #define GRADE_REPORT_H
 
+#define MAX_INPUT 256
+
+#include <iostream>
 #include <string.h>
 #include <cassert>
+
+
 class GradeReport
 {
+	/// <summary>
+	/// Output stream overload
+	/// </summary>
+	/// <param name="out">Stream</param>
+	/// <param name="gr">Grade Report</param>
+	/// <returns></returns>
+	friend std::ostream & operator << (std::ostream& out, const GradeReport& gr);
+
+	/// <summary>
+	/// Input stream overload
+	/// </summary>
+	/// <param name="in">Stream</param>
+	/// <param name="gr">Grade Report</param>
+	/// <returns></returns>
+	friend std::istream& operator >> (std::istream& in, GradeReport& gr);
+
 private:
 	/// <summary>
 	/// Student Id
@@ -89,5 +110,9 @@ public:
 	/// <param name="numberOfCredits">Student's number of credits</param>
 	/// <param name="age">Student Age</param>
 	GradeReport(unsigned int id, const char* firstName, const char* lastName, unsigned short numberOfCredits, unsigned short age);
+
+	GradeReport();
+
+	~GradeReport();
 };
 #endif

@@ -6,7 +6,7 @@ int main()
     // question 1-2
     auto* rp = new GradeReport(201715389, "Charbel", "Harb", 15, 32);
     auto* rp1 = new GradeReport();
-    GradeReport rp2(20201233, "foo", "bar", 0, 0);
+    GradeReport rp2(20201233, "foo", "bar", 0, 20);
     GradeReport rp3;
     
     // question 3-4
@@ -45,6 +45,7 @@ int main()
     std::cout << *(rp) << std::endl;
 
     //delete rp;
+    delete rp, rp1;
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
     system("pause");
 #elif __APPLE__ || __linux__ || __linux || __unix || __unix__ || __posix || defined(_POSIX_VERSION)

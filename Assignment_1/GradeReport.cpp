@@ -133,7 +133,7 @@ GradeReport& GradeReport::operator=(int val)
 
 GradeReport& GradeReport::operator+=(const GradeReport& val)
 {
-	if (_id == val._id) {
+	if (*this == val) {
 		int sizeFname = strlen(_firstName);
 		int sizeLname = strlen(val._lastName);
 		int size = sizeFname + sizeLname + 3;
@@ -154,6 +154,11 @@ GradeReport& GradeReport::operator+=(const GradeReport& val)
 		delete[] newName;
 	}
 	return *this;
+}
+
+bool GradeReport::operator==(const GradeReport& val)
+{
+	return _id == val._id;
 }
 
 GradeReport::~GradeReport()

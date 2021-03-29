@@ -142,6 +142,13 @@ public:
 	/// <returns></returns>
 	GradeReport& operator+=(const GradeReport& val);
 
+	/// <summary>
+	/// Check if objects equal
+	/// </summary>
+	/// <param name="val">Report Object</param>
+	/// <returns></returns>
+	bool operator==(const GradeReport& val);
+
 };
 
 #endif

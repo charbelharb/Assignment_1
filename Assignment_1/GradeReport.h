@@ -26,27 +26,12 @@ class GradeReport
 	/// <returns></returns>
 	friend std::istream& operator >> (std::istream& in, GradeReport& gr);
 
-	/// <summary>
-	/// Output stream overload (Pointer)
-	/// </summary>
-	/// <param name="out">Stream</param>
-	/// <param name="gr">Grade Report</param>
-	/// <returns></returns>
-	friend std::ostream& operator << (std::ostream& out, const GradeReport* gr);
-
-	/// <summary>
-	/// Input stream overload (Pointer)
-	/// </summary>
-	/// <param name="in">Stream</param>
-	/// <param name="gr">Grade Report</param>
-	/// <returns></returns>
-	friend std::istream& operator >> (std::istream& in, GradeReport* gr);
 
 private:
 	/// <summary>
 	/// Student Id
 	/// </summary>
-	unsigned int _id;
+	 int _id;
 
 	/// <summary>
 	/// Student First Name
@@ -61,12 +46,12 @@ private:
 	/// <summary>
 	/// Student's number of credits
 	/// </summary>
-	unsigned short _numberOfCredits;
+	 short _numberOfCredits;
 
 	/// <summary>
 	/// Student Age
 	/// </summary>
-	unsigned short _age;
+	 short _age;
 
 	/// <summary>
 	/// Set fields
@@ -76,14 +61,14 @@ private:
 	/// <param name="lastName">Student Last Name</param>
 	/// <param name="numberOfCredits">Student's number of credits</param>
 	/// <param name="age">Student Age</param>
-	void set(unsigned int id, const char* firstName, const char* lastName, unsigned short numberOfCredits, unsigned short age);
+	void set( int id, const char* firstName, const char* lastName,  short numberOfCredits,  short age);
 
 	/// <summary>
 	/// Set Id
 	/// </summary>
 	/// <param name="id">Student Id</param>
 	/// <returns></returns>
-	GradeReport& setId(unsigned int id);
+	GradeReport& setId( int id);
 
 	/// <summary>
 	/// Set First Name
@@ -104,14 +89,15 @@ private:
 	/// </summary>
 	/// <param name="numberOfCredits">Student's number of credits</param>
 	/// <returns></returns>
-	GradeReport& setNumberOfCredits(unsigned int numberOfCredits);
+	GradeReport& setNumberOfCredits( int numberOfCredits);
 
 	/// <summary>
 	/// Set Age
 	/// </summary>
 	/// <param name="age">Student Age</param>
 	/// <returns></returns>
-	GradeReport& setAge(unsigned int age);
+	GradeReport& setAge( int age);
+
 
 public:
 
@@ -123,7 +109,7 @@ public:
 	/// <param name="lastName">Student Last Name</param>
 	/// <param name="numberOfCredits">Student's number of credits</param>
 	/// <param name="age">Student Age</param>
-	GradeReport(unsigned int id, const char* firstName, const char* lastName, unsigned short numberOfCredits, unsigned short age);
+	GradeReport( int id, const char* firstName, const char* lastName,  short numberOfCredits,  short age);
 
 	GradeReport();
 
@@ -134,6 +120,20 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	GradeReport& operator++();
+
+	/// <summary>
+	/// Overload add credits
+	/// </summary>
+	/// <param name="val">Number of Credits</param>
+	/// <returns></returns>
+	GradeReport& operator+=(int val);
+
+	/// <summary>
+	/// Overload assign ID
+	/// </summary>
+	/// <param name="val">Id</param>
+	/// <returns></returns>
+	GradeReport& operator=(int val);
 
 };
 

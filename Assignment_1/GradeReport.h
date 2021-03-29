@@ -11,20 +11,36 @@
 class GradeReport
 {
 	/// <summary>
-	/// Output stream overload
+	/// Output stream overload (Reference)
 	/// </summary>
 	/// <param name="out">Stream</param>
 	/// <param name="gr">Grade Report</param>
 	/// <returns></returns>
-	friend std::ostream & operator << (std::ostream& out, const GradeReport& gr);
+	friend std::ostream& operator << (std::ostream& out, const GradeReport& gr);
 
 	/// <summary>
-	/// Input stream overload
+	/// Input stream overload (Reference)
 	/// </summary>
 	/// <param name="in">Stream</param>
 	/// <param name="gr">Grade Report</param>
 	/// <returns></returns>
 	friend std::istream& operator >> (std::istream& in, GradeReport& gr);
+
+	/// <summary>
+	/// Output stream overload (Pointer)
+	/// </summary>
+	/// <param name="out">Stream</param>
+	/// <param name="gr">Grade Report</param>
+	/// <returns></returns>
+	friend std::ostream& operator << (std::ostream& out, const GradeReport* gr);
+
+	/// <summary>
+	/// Input stream overload (Pointer)
+	/// </summary>
+	/// <param name="in">Stream</param>
+	/// <param name="gr">Grade Report</param>
+	/// <returns></returns>
+	friend std::istream& operator >> (std::istream& in, GradeReport* gr);
 
 private:
 	/// <summary>
@@ -67,37 +83,35 @@ private:
 	/// </summary>
 	/// <param name="id">Student Id</param>
 	/// <returns></returns>
-	GradeReport &setId(unsigned int id);
+	GradeReport& setId(unsigned int id);
 
 	/// <summary>
 	/// Set First Name
 	/// </summary>
 	/// <param name="firstName">Student First Name</param>
 	/// <returns></returns>
-	GradeReport &setFirstName(const char* firstName);
+	GradeReport& setFirstName(const char* firstName);
 
 	/// <summary>
 	/// Set Last Name
 	/// </summary>
 	/// <param name="lastName">Student Last Name</param>
 	/// <returns></returns>
-	GradeReport &setLastName(const char* lastName);
+	GradeReport& setLastName(const char* lastName);
 
 	/// <summary>
 	/// Set number of credits
 	/// </summary>
 	/// <param name="numberOfCredits">Student's number of credits</param>
 	/// <returns></returns>
-	GradeReport &setNumberOfCredits(unsigned int numberOfCredits);
+	GradeReport& setNumberOfCredits(unsigned int numberOfCredits);
 
 	/// <summary>
 	/// Set Age
 	/// </summary>
 	/// <param name="age">Student Age</param>
 	/// <returns></returns>
-	GradeReport &setAge(unsigned int age);
-
-	
+	GradeReport& setAge(unsigned int age);
 
 public:
 
@@ -114,5 +128,13 @@ public:
 	GradeReport();
 
 	~GradeReport();
+
+	/// <summary>
+	/// Pre-increments overload
+	/// </summary>
+	/// <returns></returns>
+	GradeReport& operator++();
+
 };
+
 #endif

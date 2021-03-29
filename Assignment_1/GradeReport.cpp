@@ -1,5 +1,19 @@
 #include "GradeReport.h"
 
+GradeReport::GradeReport(unsigned int id, const char* firstName, const char* lastName, unsigned short numberOfCredits, unsigned short age)
+{
+	set(id, firstName, lastName, numberOfCredits, age);
+}
+
+GradeReport::GradeReport()
+{
+	_id = {};
+	_firstName = {};
+	_lastName = {};
+	_numberOfCredits = {};
+	_age = {};
+}
+
 void GradeReport::set(unsigned int id, const char* firstName, const char* lastName, unsigned short numberOfCredits, unsigned short age)
 {
 	setId(id).setFirstName(firstName).setLastName(lastName).setNumberOfCredits(numberOfCredits).setAge(age);
@@ -40,28 +54,10 @@ GradeReport& GradeReport::setAge(unsigned int age)
 	return *this;
 }
 
-GradeReport::GradeReport(unsigned int id, const char* firstName, const char* lastName, unsigned short numberOfCredits, unsigned short age)
-{
-	set(id, firstName, lastName, numberOfCredits, age);
-}
-
-GradeReport::GradeReport()
-{
-	_id = {};
-	_firstName = {};
-	_lastName = {};
-	_numberOfCredits = {};
-	_age = {};
-}
-
-GradeReport::~GradeReport()
-{
-	 delete [] _firstName;
-	 delete [] _lastName;
-}
-
 std::ostream& operator<<(std::ostream& out, const GradeReport& gr)
 {
+	out << "Student:\t" << "ID\t" << "Fname\t" << "Lname\t" << "Credits\t" << "Age" << std::endl;
+	out << "\t" << gr._id << "\t" << gr._firstName << "\t" << gr._lastName << "\t" << gr._numberOfCredits << "\t" << gr._age << std::endl;
 	return out;
 }
 
@@ -69,22 +65,34 @@ std::istream& operator>>(std::istream& in, GradeReport& gr)
 {
 	std::cout << "Enter id" << std::endl;
 	unsigned int id{};
-	in >> id;	
+	in >> id;
 	in.ignore();
 	std::cout << "Enter First Name" << std::endl;
 	char* firstName = new char[MAX_INPUT];
-	in.getline(firstName,MAX_INPUT); 
+	in.getline(firstName, MAX_INPUT);
 	std::cout << "Enter Last Name" << std::endl;
 	char* lastName = new char[MAX_INPUT];
 	in.getline(lastName, MAX_INPUT);
 	std::cout << "Enter Number of Credit" << std::endl;
-	unsigned short numberOfCredit{};
-	in >> numberOfCredit;
+	unsigned short numberOfCredits{};
+	in >> numberOfCredits;
 	unsigned short age{};
 	std::cout << "Enter age" << std::endl;
 	in >> age;
-	gr.set(id, firstName, lastName, numberOfCredit, age);
+	gr.set(id, firstName, lastName, numberOfCredits, age);
 	delete[] firstName;
-	delete[] lastName;	
+	delete[] lastName;
 	return in;
+}
+
+GradeReport& GradeReport::operator++()
+{
+	++_age;
+	return *this;
+}
+
+GradeReport::~GradeReport()
+{
+	delete[] _firstName;
+	delete[] _lastName;
 }

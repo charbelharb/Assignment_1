@@ -6,9 +6,14 @@
 int main()
 {
     GradeReport* rp = new GradeReport(201715389, "Charbel", "Harb", 15, 32);
-    GradeReport rp2, rp3;
-    std::cin >> rp2 >> rp3;
+    GradeReport rp2(20201233, "foo", "bar", NULL, NULL);
+    
+   /* GradeReport* rp1 = new GradeReport();
+     std::cin >> *(rp1);
+     std::cout << *(rp1);*/
+
     //delete rp;
+    system("pause");
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

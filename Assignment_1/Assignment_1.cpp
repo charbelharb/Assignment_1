@@ -5,8 +5,8 @@
 #include "GradeReport.h"
 int main()
 {
-    GradeReport* rp = new GradeReport(201715389, "Charbel", "Harb", 15, 32);
-    GradeReport rp2(20201233, "foo", "bar", NULL, NULL);
+    auto* rp = new GradeReport(201715389, "Charbel", "Harb", 15, 32);
+    GradeReport rp2(20201233, "foo", "bar", 0, 0);
     
     std::cout << *(rp);
     *(rp) += 1;
@@ -14,7 +14,12 @@ int main()
     *(rp) += *(rp);
     std::cout << *(rp);
     //delete rp;
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
     system("pause");
+#elif __APPLE__ || __linux__ || __linux || __unix || __unix__ || __posix || defined(_POSIX_VERSION)
+    std::cin.get();
+#endif
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

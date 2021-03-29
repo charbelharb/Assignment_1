@@ -4,7 +4,7 @@
 #define MAX_INPUT 256
 
 #include <iostream>
-#include <string.h>
+#include <cstring>
 #include <cassert>
 
 
@@ -31,27 +31,27 @@ private:
 	/// <summary>
 	/// Student Id
 	/// </summary>
-	 int _id;
+	 int _id{};
 
 	/// <summary>
 	/// Student First Name
 	/// </summary>
-	char* _firstName;
+	char* _firstName{};
 
 	/// <summary>
 	/// Student Last Name
 	/// </summary>
-	char* _lastName;
+	char* _lastName{};
 
 	/// <summary>
 	/// Student's number of credits
 	/// </summary>
-	 short _numberOfCredits;
+	 short _numberOfCredits{};
 
 	/// <summary>
 	/// Student Age
 	/// </summary>
-	 short _age;
+	 short _age{};
 
 	/// <summary>
 	/// Set fields

@@ -135,6 +135,13 @@ public:
 	/// <returns></returns>
 	GradeReport& operator=(int val);
 
+	/// <summary>
+	/// Overload assign name
+	/// </summary>
+	/// <param name="val">Report Object</param>
+	/// <returns></returns>
+	GradeReport& operator+=(const GradeReport& val);
+
 };
 
 #endif

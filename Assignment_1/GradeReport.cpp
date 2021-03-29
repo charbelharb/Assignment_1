@@ -103,6 +103,23 @@ GradeReport& GradeReport::operator=(int val)
 	return *this;
 }
 
+GradeReport& GradeReport::operator+=(const GradeReport& val)
+{
+	if (_id == val._id) {
+		int sizeFname = strlen(_firstName);
+		int sizeLname = strlen(val._lastName);
+		int size = sizeFname + sizeLname + 3;
+		char* newName = new char [size];
+		assert(newName != 0);
+		strcpy_s(newName, sizeFname + 1, _firstName);
+		strcat_s(newName, sizeFname + 2, " ");
+		strcat_s(newName, size, val._lastName);
+		setFirstName(newName);
+		delete[] newName;
+	}
+	return *this;
+}
+
 GradeReport::~GradeReport()
 {
 	delete[] _firstName;

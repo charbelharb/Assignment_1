@@ -11,6 +11,7 @@ int main()
     std::cout << *(rp);
     *(rp) += 1;
     *(rp) = 20180000;
+    *(rp) += *(rp);
     std::cout << *(rp);
     //delete rp;
     system("pause");

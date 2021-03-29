@@ -8,10 +8,24 @@ GradeReport::GradeReport( int id, const char* firstName, const char* lastName,  
 GradeReport::GradeReport()
 {
 	_id = 0;
+
 	_firstName = new char[2];
-	strcpy_s(_firstName, 2, "");
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+    strcpy_s(_firstName, 2, "");
+#elif __APPLE__ || __linux__ || __linux || __unix || __unix__ || __posix || defined(_POSIX_VERSION)
+    strcpy(_firstName, "");
+#endif
+    assert(_firstName != nullptr);
+
 	_lastName = new char[2];
-	strcpy_s(_lastName, 2, "");
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+    strcpy_s(_lastName, 2, "");
+#elif __APPLE__ || __linux__ || __linux || __unix || __unix__ || __posix || defined(_POSIX_VERSION)
+    strcpy(_lastName, "");
+#endif
+
+    assert(_lastName != nullptr);
+
 	_numberOfCredits = 3;
 	_age = 0;
 }
@@ -28,7 +42,7 @@ GradeReport& GradeReport::setId( int id) {
 
 GradeReport& GradeReport::setFirstName(const char* firstName)
 {
-	 unsigned  long firstNameSize = strlen(firstName) + 1;
+	 unsigned long firstNameSize = strlen(firstName) + 1;
 	_firstName = new char[firstNameSize];
 	assert(_firstName != nullptr);
 

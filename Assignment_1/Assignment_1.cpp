@@ -9,7 +9,7 @@ int main()
     GradeReport rp2(20201233, "foo", "bar", 0, 0);
     GradeReport rp3;
     
-    //// question 3-4
+    // question 3-4
     std::cout << "Stream overload \n";
     std::cin >> *(rp1) >> rp3;
     std::cout << *(rp1) << rp3;

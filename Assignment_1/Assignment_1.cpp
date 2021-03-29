@@ -1,18 +1,49 @@
-// Assignment_1.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
 #include "GradeReport.h"
 int main()
 {
+    // question 1-2
     auto* rp = new GradeReport(201715389, "Charbel", "Harb", 15, 32);
+    auto* rp1 = new GradeReport();
     GradeReport rp2(20201233, "foo", "bar", 0, 0);
+    GradeReport rp3;
     
-    std::cout << *(rp);
-    *(rp) += 1;
-    *(rp) = 20180000;
-    *(rp) += *(rp);
-    std::cout << *(rp);
+    //// question 3-4
+    std::cout << "Stream overload \n";
+    std::cin >> *(rp1) >> rp3;
+    std::cout << *(rp1) << rp3;
+
+    // question 5
+    std::cout << "++ overload \n";
+    std::cout << *(rp) << std::endl;
+    ++*(rp);
+    std::cout << *(rp) << std::endl;
+
+    // question 6
+    std::cout << "+= overload \n";
+    std::cout << rp2 << std::endl;
+    rp2 += 7;
+    std::cout << rp2 << std::endl;
+
+    // question 7
+    std::cout << "= overload \n";
+    std::cout << rp3 << std::endl;
+    rp3 = 20211234;
+    std::cout << rp3 << std::endl;
+
+    // question 8
+    // same object
+    GradeReport* rf = &rp3;
+    std::cout << rp3 << std::endl;
+    rp3 += *(rf);
+    std::cout << rp3 << std::endl;
+
+    // not same object
+    std::cout << *(rp) << std::endl;
+    *(rp) += rp2;
+    std::cout << *(rp) << std::endl;
+
     //delete rp;
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
     system("pause");
@@ -21,14 +52,3 @@ int main()
 #endif
 
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

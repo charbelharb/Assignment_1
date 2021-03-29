@@ -7,11 +7,13 @@ GradeReport::GradeReport( int id, const char* firstName, const char* lastName,  
 
 GradeReport::GradeReport()
 {
-	_id = {};
-	_firstName = {};
-	_lastName = {};
-	_numberOfCredits = {};
-	_age = {};
+	_id = 0;
+	_firstName = new char[2];
+	strcpy_s(_firstName, 2, "");
+	_lastName = new char[2];
+	strcpy_s(_lastName, 2, "");
+	_numberOfCredits = 3;
+	_age = 0;
 }
 
 void GradeReport::set( int id, const char* firstName, const char* lastName,  short numberOfCredits,  short age)
@@ -31,7 +33,7 @@ GradeReport& GradeReport::setFirstName(const char* firstName)
 	assert(_firstName != nullptr);
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
-    strlcpy(_firstName, firstNameSize, firstName);
+	strcpy_s(_firstName, firstNameSize, firstName);
 #elif __APPLE__ || __linux__ || __linux || __unix || __unix__ || __posix || defined(_POSIX_VERSION)
     strcpy(_firstName,firstName);
 #endif
@@ -44,6 +46,7 @@ GradeReport& GradeReport::setLastName(const char* lastName)
 	 unsigned  long lastNameSize = strlen(lastName) + 1;
 	_lastName = new char[lastNameSize];
 	assert(_lastName != nullptr);
+
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
     strcpy_s(_lastName, lastNameSize, lastName);
 #elif __APPLE__ || __linux__ || __linux || __unix || __unix__ || __posix || defined(_POSIX_VERSION)
@@ -53,7 +56,7 @@ GradeReport& GradeReport::setLastName(const char* lastName)
 	return *this;
 }
 
-GradeReport& GradeReport::setNumberOfCredits( int numberOfCredits)
+GradeReport& GradeReport::setNumberOfCredits(int numberOfCredits)
 {
 	_numberOfCredits = (short)(numberOfCredits >= 3 && numberOfCredits <= 18 ? numberOfCredits : 3);
 	return *this;
@@ -122,6 +125,7 @@ GradeReport& GradeReport::operator+=(const GradeReport& val)
 		int size = sizeFname + sizeLname + 3;
 		char* newName = new char [size];
 		assert(newName != nullptr);
+
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
         strcpy_s(newName, sizeFname + 1, _firstName);
 		strcat_s(newName, sizeFname + 2, " ");
